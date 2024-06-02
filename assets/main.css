@@ -1,0 +1,314 @@
+* {
+    /* brand foundation */
+    --brand-hue: 200;
+    --brand-saturation: 100%;
+    --brand-lightness: 50%;
+    --navbar-height: 2.5em;
+
+    /* light */
+    --brand-light: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
+    --text1-light: hsl(var(--brand-hue) var(--brand-saturation) 10%);
+    --text2-light: hsl(var(--brand-hue) 30% 30%);
+    --surface1-light: hsl(var(--brand-hue) 25% 90%);
+    --surface2-light: hsl(var(--brand-hue) 20% 99%);
+    --surface3-light: hsl(var(--brand-hue) 20% 92%);
+    --surface4-light: hsl(var(--brand-hue) 20% 85%);
+    --surface-shadow-light: var(--brand-hue) 10% 20%;
+    --shadow-strength-light: .02;
+
+    /* dark */
+    --brand-dark: hsl(var(--brand-hue) calc(var(--brand-saturation) / 2) calc(var(--brand-lightness) / 1.5));
+    --text1-dark: hsl(var(--brand-hue) 15% 85%);
+    --text2-dark: hsl(var(--brand-hue) 5% 65%);
+    --surface1-dark: hsl(var(--brand-hue) 10% 10%);
+    --surface2-dark: hsl(var(--brand-hue) 10% 15%);
+    --surface3-dark: hsl(var(--brand-hue) 5% 20%);
+    --surface4-dark: hsl(var(--brand-hue) 5% 25%);
+    --surface-shadow-dark: var(--brand-hue) 50% 3%;
+    --shadow-strength-dark: .8;
+
+    /* dim */
+    --brand-dim: hsl(var(--brand-hue) calc(var(--brand-saturation) / 1.25) calc(var(--brand-lightness) / 1.25));
+    --text1-dim: hsl(var(--brand-hue) 15% 75%);
+    --text2-dim: hsl(var(--brand-hue) 10% 61%);
+    --surface1-dim: hsl(var(--brand-hue) 10% 20%);
+    --surface2-dim: hsl(var(--brand-hue) 10% 25%);
+    --surface3-dim: hsl(var(--brand-hue) 5% 30%);
+    --surface4-dim: hsl(var(--brand-hue) 5% 35%);
+    --surface-shadow-dim: var(--brand-hue) 30% 13%;
+    --shadow-strength-dim: .2;
+}
+
+:root {
+    --max-width: 1100px;
+    --border-radius: 12px;
+    --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+        'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+        'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+    color-scheme: light;
+
+    /* set defaults */
+    --brand: var(--brand-light);
+    --text1: var(--text1-light);
+    --text2: var(--text2-light);
+    --surface1: var(--surface1-light);
+    --surface2: var(--surface2-light);
+    --surface3: var(--surface3-light);
+    --surface4: var(--surface4-light);
+    --surface-shadow: var(--surface-shadow-light);
+    --shadow-strength: var(--shadow-strength-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+
+        --brand: var(--brand-dark);
+        --text1: var(--text1-dark);
+        --text2: var(--text2-dark);
+        --surface1: var(--surface1-dark);
+        --surface2: var(--surface2-dark);
+        --surface3: var(--surface3-dark);
+        --surface4: var(--surface4-dark);
+        --surface-shadow: var(--surface-shadow-dark);
+        --shadow-strength: var(--shadow-strength-dark);
+    }
+}
+
+[data-theme="light"] {
+    color-scheme: light;
+
+    --brand: var(--brand-light);
+    --text1: var(--text1-light);
+    --text2: var(--text2-light);
+    --surface1: var(--surface1-light);
+    --surface2: var(--surface2-light);
+    --surface3: var(--surface3-light);
+    --surface4: var(--surface4-light);
+    --surface-shadow: var(--surface-shadow-light);
+    --shadow-strength: var(--shadow-strength-light);
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    --brand: var(--brand-dark);
+    --text1: var(--text1-dark);
+    --text2: var(--text2-dark);
+    --surface1: var(--surface1-dark);
+    --surface2: var(--surface2-dark);
+    --surface3: var(--surface3-dark);
+    --surface4: var(--surface4-dark);
+    --surface-shadow: var(--surface-shadow-dark);
+    --shadow-strength: var(--shadow-strength-dark);
+}
+
+[data-theme="dim"] {
+    color-scheme: dark;
+
+    --brand: var(--brand-dim);
+    --text1: var(--text1-dim);
+    --text2: var(--text2-dim);
+    --surface1: var(--surface1-dim);
+    --surface2: var(--surface2-dim);
+    --surface3: var(--surface3-dim);
+    --surface4: var(--surface4-dim);
+    --surface-shadow: var(--surface-shadow-dim);
+    --shadow-strength: var(--shadow-strength-dim);
+}
+
+html {
+    block-size: 100%;
+    background-color: var(--surface1);
+    transition: background-color .2s ease-in-out;
+    color: var(--text1);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100dvw;
+    overflow-y: scroll;
+    position: relative;
+}
+
+#main {
+    height: 100%;
+    border: 1px solid lightgray;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 2em auto;
+    gap: .15em;
+}
+
+
+.main-body {
+    background-color: var(--surface2);
+    border-radius: 2px;
+    overflow-y: scroll;
+
+    button {
+        height: 3em;
+        width: 10em;
+    }
+}
+
+
+header {
+    display: inline-grid;
+    gap: 1ch;
+}
+
+.rad_shadow {
+    border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+    /*box-shadow: 0 1rem .5rem -.5rem;*/
+    box-shadow:
+        0 0 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+        0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .01)),
+        0 10.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+        0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+        0 4.8px 23.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+        0 10px 90px hsl(var(--surface-shadow) / var(--shadow-strength));
+}
+
+a {
+    display: flex;
+}
+
+li {
+    list-style: none;
+
+    .attribute {
+        p {
+            font-size: .8rem;
+        }
+    }
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+ul li::marker {
+    font-size: 1.5em;
+}
+
+
+#theme__toggle {
+    cursor:pointer;
+    background: 0;
+    border: 0;
+    opacity: 0.6;
+    padding: 0.35em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+    isolation: isolate;
+}
+
+#theme__toggle::after {
+    content: attr(aria-label);
+    position: absolute;
+    background: var(--surface4);
+    font-size: small;
+    width: max-content;
+    left: -4em;
+    right: 0;
+    top : 99%;
+    margin: 0 auto;
+    padding: 0.4em 0.85em;
+    border-radius: 5px;
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: top;
+    transition: transform 0ms linear 100ms,  opacity 70ms linear;
+
+}
+
+.button:active::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--surface3);
+    border-radius: inherit;
+    transform: scale(0);
+    opacity: 0;
+    z-index: -1;
+}
+
+.button:active::before {
+    animation: pulse 990ms linear;
+}
+
+
+.toggle__circle,
+.toggle__sun {
+    fill: var(--text1);
+}
+
+
+.toggle__circle[theme-state="light"] {
+    transform: translate(-15%);
+    fill: var(--text1);
+}
+
+.toggle__circle {
+    transition: transform 500ms ease-out;
+}
+
+.toggle__sun {
+
+    transform-origin: center;
+    transition: transform 750ms cubic-bezier(.29,.56,.68,1.18);
+}
+
+.toggle__sun[theme-state="light"] {
+    transform: rotate(0.75turn);
+    fill: var(--text1);
+}
+
+
+#theme__toggle:hover,
+#theme__toggle:focus-visible, 
+#theme__toggle:active {
+    background: var(--surface2);
+    outline: 0 ;
+    box-shadow: none;
+    opacity: 1;
+    transition: transform 300ms linear, opacity 70ms linear;
+}
+
+#theme__toggle:hover::after,
+#theme__toggle:focus-visible::after {
+    opacity: 0.7;
+    transform: scale(1);
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(0);
+        opacity: .5;
+    }
+    10% {
+       transform: scale(1); 
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity : 0;
+        transform: scale(1); 
+    }
+}
+
+
+

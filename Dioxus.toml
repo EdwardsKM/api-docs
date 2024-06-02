@@ -1,0 +1,43 @@
+[application]
+
+# App (Project) Name
+name = "api-docs"
+
+# Dioxus App Default Platform
+# desktop, web
+default_platform = "web"
+
+# `build` & `serve` dist path
+out_dir = "dist"
+
+# resource (assets) file folder
+asset_dir = "assets"
+
+[web.app]
+# base_path = "https://github.com/edumzii/api_docs.git"
+# HTML title tag content
+title = "Fastapayments Api Documentation"
+language = "en"
+
+[web.watcher]
+index_on_404 = true
+# when watcher trigger, regenerate the `index.html`
+reload_html = true
+
+# which files or dirs will be watcher monitoring
+watch_path = ["src", "assets"]
+
+# include `assets` in web platform
+[web.resource]
+
+# CSS style file
+style = ["main.css", "sidebar.css", "navbar.css", "service.css"]
+
+# Javascript code file
+script = ["theming.js"]
+
+[web.resource.dev]
+
+# Javascript code file
+# serve: [dev-server] only
+script = []

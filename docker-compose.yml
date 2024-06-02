@@ -1,0 +1,9 @@
+services:
+  api_documentation_website:
+    container_name: docs.fastapayments.com
+    build: .
+    ports:
+      - 10000:80
+
+# docker compose up --build
+

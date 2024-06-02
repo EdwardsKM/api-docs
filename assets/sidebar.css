@@ -1,0 +1,223 @@
+@container sidebar (width > 400px) {
+  /* <stylesheet> */
+}
+
+
+
+.sidebar {
+  grid-column: 1/2;
+  grid-row: 2/-1;
+  width: 15vw;
+  background: var(--surface3);
+  border-radius: 2px;
+  overflow-y: scroll;
+  z-index: 2;
+
+  a.active {
+    background: blueviolet;
+  }
+
+  ul li:first-child {
+    border-top: 1px solid var(--text2);
+  }
+}
+
+@media(max-width: 720px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.sidebar>.service-header {
+  padding-inline: .75em;
+  text-transform: capitalize;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--surface4);
+}
+
+/* Style the sidenav links and the dropdown button */
+.dropdown-btn {
+  padding-block: .75em;
+  font-size: .75rem;
+  padding-left: .5rem;
+  font-weight: 600;
+  width: 100%;
+  text-decoration: none;
+  color: var(--text1);
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  min-height: 2em;
+  max-height: max-content;
+  text-transform: capitalize;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    fill: var(--text2);
+    width: 20px;
+  }
+}
+
+/* On mouse-over */
+/* .sidebar a:hover,
+.dropdown-btn:hover {
+  color: #f1f1f1;
+  background: var(--surface3);
+} */
+
+/* Add an active class to the active dropdown button */
+.active {
+  outline: 1px solid var(--text1);
+  color: var(--text2);
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  background-color: var(--surface3);
+  font-size: 0.85em;
+  border-radius: 5px;
+  margin-left: 1em;
+  margin-right: .5em;
+
+  a[data-title]:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 24px;
+    left: 20%;
+    z-index: 155;
+    background-color: var(--surface1);
+    width: max-content;
+    text-transform: capitalize
+    
+  }
+
+  /* a[data-title]::before, */
+  a[data-title]::after {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-in-out;
+  }
+
+  /* a[data-title]:hover::before, */
+  a[data-title]:hover::after {
+    opacity: 1;
+    visibility: visible;
+    padding: 5px;
+    max-width: 35vh;
+    border-radius: 3px;
+  }
+}
+
+.sidebar-endpoint {
+  align-items: center;
+  padding-inline: 6px;
+  padding-block: .25em;
+  margin: 0;
+  margin-block: .5em;
+  font-weight: 400;
+  text-transform: capitalize;
+  font-size: .9em;
+  text-decoration: none;
+  text-align: left;
+  color: var(--text1);
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  height: 2em;
+  border-radius: 5px;
+  position: relative;
+}
+
+.sidebar-endpoint:hover {
+  background: var(--surface4);
+}
+
+.sidebar-service-group {
+  color: var(--text1);
+  margin-block: .1rem;
+  padding-left: .5em;
+  padding-block: .75em;
+  font-size: .9rem;
+  text-transform: capitalize;
+  border: 1px solid var(--surface4);
+  border-radius: 3px;
+  font-weight: 600;
+  box-shadow: 0 0 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+    0 3.7px 1.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .01)),
+    0 2.5px 2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+    0 3.3px 2.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+    0 4.8px 13.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+    0 1px 5px hsl(var(--surface-shadow) / var(--shadow-strength));
+}
+
+.sidebar-service {
+  color: var(--text1);
+  padding-left: .75em;
+  font-size: .9rem;
+  background: var(--surface3);
+  cursor: pointer;
+  width: 100%;
+  min-height: 2em;
+  text-transform: capitalize;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  border-bottom: 1px solid var(--surface4);
+  font-weight: 600;
+  box-shadow: 0 0 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+    0 3.7px 1.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .01)),
+    0 2.5px 2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+    0 3.3px 2.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+    0 4.8px 13.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+    0 1px 5px hsl(var(--surface-shadow) / var(--shadow-strength));
+  margin-block: .1rem;
+
+  svg {
+    fill: var(--text2);
+    width: 20px;
+  }
+}
+
+/* For browsers that support `scrollbar-*` properties */
+@supports (scrollbar-color: auto) {
+  .sidebar {
+      scrollbar-color: rgb(62, 116, 252) var(--surface2);
+      scrollbar-width: thin !important;
+  }
+
+  .sidebar:hover {
+      scrollbar-width: thin !important;
+  }
+
+  .sidebar::-webkit-scrollbar {
+      width: thin !important;
+      padding: 0;
+      border-radius: 10px;
+  }
+
+  .sidebar::-webkit-scrollbar-track {
+      border-radius: 10px;
+  }
+
+  .sidebar::-webkit-scrollbar-thumb {
+      border-radius: 3em;
+      height: 30px;
+  }
+
+  .sidebar::-webkit-scrollbar-thumb:hover {
+      padding: 0;
+      margin: 0;
+  }
+
+  .sidebar::-webkit-scrollbar:vertical {
+      display: none;
+  }
+}
